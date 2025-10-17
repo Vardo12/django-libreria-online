@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Todos los Libros</h2>
+
+<div class="grid-container">
+  {% for p in productos %}
+  <div class="card">
+    <img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">
+    <div class="card-body">
+      <h3>{{ p.nombre }}</h3>
+      <p>${{ p.precio }}</p>
+      <a href="{% url 'detalle' p.id %}" class="btn">Ver Detalles</a>
+    </div>
+  </div>
+  {% empty %}
+  <p>No hay productos disponibles.</p>
+  {% endfor %}
+</div>
+{% endblock %}
